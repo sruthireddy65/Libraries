@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+//    @Autowired
+//    private EmployeeRepository employeeRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
@@ -21,7 +21,7 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        employeeRepository.save(new Employee("emp1", new BigDecimal("1000")));
-        employeeRepository.save(new Employee("emp2", new BigDecimal("2000")));
+//        employeeRepository.save(new Employee("emp1", new BigDecimal("1000")));
+//        employeeRepository.save(new Employee("emp2", new BigDecimal("2000")));
     }
 }
