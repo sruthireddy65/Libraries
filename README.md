@@ -20,3 +20,5 @@ Repo to explore some libraries ( Testing libraries for now )
    maven-failsafe-plugin is used at verify phase to run integration tests.(Not a core plugin. so need to specify manually)
 5. -Dmaven.test.skip=true skips compiling and running test cases whereas -DskipTests only skips testcase execution
 6. spring-boot-test depedency adds Mockito, Junit, JSONPath and different assertion libraries like hamcrest, AssertJ , JsonAssert.
+7. To return or send an XML response or XML request add jackson-dataformat-xml dependency to the pom and add produces and consumes
+   fields with desired mediatype.

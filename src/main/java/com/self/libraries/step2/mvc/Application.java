@@ -1,5 +1,7 @@
 package com.self.libraries.step2.mvc;
 
+import com.self.libraries.step2.mvc.model.Employee;
+import com.self.libraries.step2.mvc.repository.EmployeeRepository;
 import com.self.libraries.webflux.model.Product;
 import com.self.libraries.webflux.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +26,15 @@ public class Application implements CommandLineRunner {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    EmployeeRepository employeeRepository;
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-        Flux<Product> productFlux = Flux.just(new Product(null,"p1",100d),
-                new Product(null,"p2",200d))
-                .flatMap(product -> productRepository.save(product));
-        productFlux.thenMany(productRepository.findAll())
-                .subscribe(System.out::println);
+       employeeRepository.save(new Employee("emp1"));
+        employeeRepository.save(new Employee("emp2"));
     }
 }
