@@ -1,0 +1,20 @@
+{
+  "namespace": "com.self.libraries.apacheavro.generated",
+  "name": "Employee",
+  "type": "record",
+  "doc": "Employee object",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "age",
+      "type": "int"
+    },
+    {
+      "name": "address",
+      "type": "com.self.libraries.apacheavro.generated.Address"
+    }
+  ]
+}

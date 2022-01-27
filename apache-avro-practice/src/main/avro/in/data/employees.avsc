@@ -1,0 +1,15 @@
+{
+  "namespace": "com.self.libraries.apacheavro.generated",
+  "type": "record",
+  "name": "Employees",
+  "doc": "object to contain array of employees",
+  "fields": [
+    {
+      "name": "employee",
+      "type":{
+        "type": "array",
+        "items": "com.self.libraries.apacheavro.generated.Employee"
+      }
+    }
+  ]
+}

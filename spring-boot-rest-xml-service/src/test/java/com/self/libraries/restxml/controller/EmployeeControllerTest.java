@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -75,5 +77,19 @@ class EmployeeControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_XML_VALUE))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().xml("<Employee><id>0</id><name>emp1</name><salary>5000</salary></Employee>"));
+    }
+
+    @Test
+    public void testGetEmployeesJsonResponseEntity() throws Exception {
+        when(employeeService.getAllEmployees()).thenReturn(Arrays.asList(new Employee("emp1", new BigDecimal("1000"))));
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/employees/all")
+                        .accept(MediaType.APPLICATION_JSON_VALUE))
+                .andReturn();
+        MockHttpServletResponse content = result.getResponse();
+        System.out.println(content);
+//                .andExpect(MockMvcResultMatchers.status().isOk())
+//                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name", Matchers.is("emp1")))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].salary", Matchers.is(1000)));
     }
 }
